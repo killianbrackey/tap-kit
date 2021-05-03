@@ -50,7 +50,9 @@ class TapExecutor:
             self.sync()
 
     def discover(self):
+        print('Discovering...')
         catalog = [stream().generate_catalog() for stream in self.streams]
+        print(json.dump({'streams': catalog}, sys.stdout, indent=4))
 
         return json.dump({'streams': catalog}, sys.stdout, indent=4)
 
